@@ -1,0 +1,53 @@
+.table-card-container {
+  .flex-start-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .card {
+      font-size: 22px;
+      font-weight: 500;
+      margin: 20px;
+
+      .input-full-width {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-top: 5px;
+      }
+
+      div {
+        padding: 15px;
+      }
+    }
+  }
+  .flex-center-container {
+    display: flex;
+    justify-content: center;
+    .subject-table-container {
+      width: 80vw;
+      margin: 20px;
+
+      table {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}

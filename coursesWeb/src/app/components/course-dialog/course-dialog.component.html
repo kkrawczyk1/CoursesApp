@@ -1,0 +1,77 @@
+<div class="table-card-container">
+    <mat-toolbar class="table-upper-bar">
+        <div>
+            <span>{{dialogTopic$ | async}}</span>
+        </div>
+    </mat-toolbar>
+    <div class="flex-start-container">
+        <div class="card">
+            <form [formGroup]="form" autocomplete="on">
+                <mat-form-field class="input-full-width">
+                    <mat-label>Nazwa</mat-label>
+                    <input matInput type="text" formControlName="name">
+                    <mat-error *ngIf="nameControl?.invalid">Pole jest wymagane</mat-error>
+                </mat-form-field>
+                <mat-form-field class="input-full-width">
+                    <mat-label>Opis</mat-label>
+                    <input matInput type="text" formControlName="description">
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+    <div class="flex-center-container">
+        <div class="subject-table-container mat-elevation-z8">
+            <mat-toolbar class="table-upper-bar toolbar">
+                <div class="toolbar-title">
+                    <span>Tematy zajęć</span>
+                </div>
+                <div style="flex: 1"></div>
+                <div class="center-content">
+                    <div style="padding-left: 10px;">
+                        <button mat-mini-fab style="background: white; color: grey;" matTooltip="Dodaj temat zajęć"
+                            matTooltipPosition="below" matTooltipClass="tool-tip-font" (click)="addSubject()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </mat-toolbar>
+            <table mat-table [dataSource]="subjectsTemp">
+                <ng-container matColumnDef="subjectName">
+                    <th mat-header-cell *matHeaderCellDef> Temat zajęć </th>
+                    <td mat-cell *matCellDef="let element"> {{element.subjectName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="subjectNumber">
+                    <th mat-header-cell *matHeaderCellDef> Numer tematu </th>
+                    <td mat-cell *matCellDef="let element"> {{element.subjectNumber}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let subject" style="width: 120px;">
+                        <button mat-icon-button routerLinkActive="active" matTooltip="Edytuj kurs"
+                            (click)="editSubject(subject)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button routerLinkActive="active" matTooltip="Usuń kurs"
+                            (click)="deleteSubject(subject)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </div>
+    <div class="flex-center">
+        <button mat-raised-button style="margin-right: 15px;" (click)="abort()">
+            Anuluj
+        </button>
+        <button type="submit" class="flex-btn" color="primary" mat-raised-button [disabled]="form.invalid"
+            (click)="save()">
+            Zapisz
+        </button>
+    </div>
+</div>
