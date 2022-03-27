@@ -3,6 +3,7 @@
 ## Instalacja
 
 ***API***
+
 Upewnij się, że masz zainstalowane .NET Core 5.0 SDK. Możesz znaleźć je [tutaj](https://dotnet.microsoft.com/en-us/download/dotnet/5.0)
 
 Aplikacja posiada bazę umieszczoną w localDB, w appSettings.json powstał defaultowy connectionString(upewnij się, że posiadasz bazę o takiej samej nazwie w SQL Server Object Explorer). Projekt zawiera już migracje, wystarczy (np w Package Menager Console) uruchomić:
